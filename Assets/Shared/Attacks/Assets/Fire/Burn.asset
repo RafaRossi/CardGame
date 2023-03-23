@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876391e1289f2594fb0f7acbe07f8b02, type: 3}
+  m_Name: Burn
+  m_EditorClassIdentifier: 
+  attackName: Burn
+  attackType: {fileID: 11400000, guid: b81a6fddbc660cd4e96976c7e0033479, type: 2}
+  baseAttackPower: 10
+  baseManaCost: 10
+  targets:
+  - {fileID: 11400000, guid: ae73f6ba5dc1983418f0507582ec8f0a, type: 2}
