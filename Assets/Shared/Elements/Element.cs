@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Element")]
-public class Element : ScriptableObject
+namespace Game
 {
-    [SerializeField] private List<Element> weakness = new List<Element>();
-    [SerializeField] private List<Element> strongness = new List<Element>();
+    [CreateAssetMenu(menuName = "Element")]
+    public class Element : ScriptableObject
+    {
+        [SerializeField] private List<Element> weakness = new List<Element>();
+        [SerializeField] private List<Element> strongness = new List<Element>();
 
-    public List<Element> GetWeakness() => weakness;
-    public List<Element> GetStrongness() => strongness;
+        public List<Element> GetWeakness() => weakness;
+        public List<Element> GetStrongness() => strongness;
 
-    public Color elementColor;
+        public Color elementColor;
+    }
 }

@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IDamageable
+namespace Game
 {
-    void TakeDamage(float damage);
-}
-
-public class Damageable : MonoBehaviour, IDamageable
-{
-    private Health _health;
-    
-    public void TakeDamage(float damage)
+    public interface IDamageable
     {
-        _health.AddValue(-damage);
+        void TakeDamage(float damage);
+    }
+
+    public class Damageable : MonoBehaviour, IDamageable
+    {
+        private Health _health;
+    
+        public void TakeDamage(float damage)
+        {
+            _health.AddValue(-damage);
+        }
     }
 }
+

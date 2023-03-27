@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Attack")]
-public class Attack : ScriptableObject
+namespace Game
 {
-    [SerializeField] private string attackName;
-    [SerializeField] private Element attackType;
+    [CreateAssetMenu(menuName = "Attack")]
+    public class Attack : ScriptableObject
+    {
+        [SerializeField] private string attackName;
+        [SerializeField] private Element attackType;
 
-    [SerializeField] private Target[] targets;
+        [SerializeField] private Target[] targets;
 
-    public string GetAttackName() => attackName;
-    public Element GetAttackType() => attackType;
+        public string GetAttackName() => attackName;
+        public Element GetAttackType() => attackType;
 
-    public Target[] GetTargets() => targets;
+        public Target[] GetTargets() => targets;
+    }
 }

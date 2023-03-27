@@ -3,18 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+namespace Game
 {
-    [SerializeField] private CardAsset cardInfo;
-    public Health Health { get; set; }
-
-    private void Awake()
+    public class Card : MonoBehaviour
     {
-        InitializeCard();
-    }
+        [SerializeField] private CardAsset cardInfo;
+        public Health Health { get; set; }
 
-    private void InitializeCard()
-    {
-        Health = new Health(cardInfo.GetBaseHealth(), cardInfo.GetBaseHealth());
+        private void Awake()
+        {
+            InitializeCard();
+        }
+
+        private void InitializeCard()
+        {
+            Health = new Health(cardInfo.GetBaseHealth(), cardInfo.GetBaseHealth());
+        }
     }
 }

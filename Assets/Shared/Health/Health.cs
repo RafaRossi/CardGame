@@ -3,53 +3,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseValueClass
+namespace Game
 {
-    public float Value { get; protected set; }
-    protected float _maxValue;
-
-    protected BaseValueClass(float initialValue, float maxValue)
+    public abstract class BaseValueClass
     {
-        Value = initialValue;
-        _maxValue = maxValue;
+        public float Value { get; protected set; }
+        protected float _maxValue;
+
+        protected BaseValueClass(float initialValue, float maxValue)
+        {
+            Value = initialValue;
+            _maxValue = maxValue;
         
-        Debug.Log("Base");
+            Debug.Log("Base");
+        }
+
+        public virtual void AddValue(float value)
+        {
+            Value += value;
+        }
+
+        public virtual void SetValue(float value)
+        {
+            Value = value;
+        }
+
+        public virtual void ChangeMaxValue(float newValue)
+        {
+            _maxValue = newValue;
+        }
     }
 
-    public virtual void AddValue(float value)
+    [Serializable]
+    public class Health : BaseValueClass
     {
-        Value += value;
-    }
+        public Action OnDie = delegate {  };
 
-    public virtual void SetValue(float value)
-    {
-        Value = value;
-    }
+        public override void AddValue(float value)
+        {
+            base.AddValue(value);
 
-    public virtual void ChangeMaxValue(float newValue)
-    {
-        _maxValue = newValue;
-    }
-}
-
-[System.Serializable]
-public class Health : BaseValueClass
-{
-    public Action OnDie = delegate {  };
-
-    public override void AddValue(float value)
-    {
-        base.AddValue(value);
-
-        if (!(Value <= 0)) return;
+            if (!(Value <= 0)) return;
         
-        Value = 0;
+            Value = 0;
             
-        OnDie?.Invoke();
-    }
+            OnDie?.Invoke();
+        }
 
-    public Health(float initialValue, float maxValue) : base(initialValue, maxValue)
-    {
-        Debug.Log("Value");
+        public Health(float initialValue, float maxValue) : base(initialValue, maxValue)
+        {
+            Debug.Log("Value");
+        }
     }
 }

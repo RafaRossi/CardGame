@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AttackBehaviour : MonoBehaviour
+namespace Game
 {
-    public abstract void InitializeBehaviour();
+    public abstract class AttackBehaviour : MonoBehaviour
+    {
+        public abstract void InitializeBehaviour();
+    }
 }
+

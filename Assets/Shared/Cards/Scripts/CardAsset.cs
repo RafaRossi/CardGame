@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Card")]
-public class CardAsset : ScriptableObject
+namespace Game
 {
-    [SerializeField] private List<Element> elements = new List<Element>();
-    [SerializeField] private List<AttackBehaviour> attackBehaviour = new List<AttackBehaviour>();
+    [CreateAssetMenu(menuName = "Card")]
+    public class CardAsset : ScriptableObject
+    {
+        [SerializeField] private List<Element> elements = new List<Element>();
+        [SerializeField] private List<AttackBehaviour> attackBehaviour = new List<AttackBehaviour>();
 
-    [SerializeField] private float baseHealth;
+        [SerializeField] private float baseHealth;
 
-    public float GetBaseHealth() => baseHealth;
+        public float GetBaseHealth() => baseHealth;
+    }
 }
