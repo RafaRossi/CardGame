@@ -20,6 +20,13 @@ namespace Game
         public void AddXP(float xpAmount)
         {
             CurrentXPAmount += xpAmount;
+
+            if(CurrentXPAmount >= 100)
+            {
+                IncreasePlayerLevel();
+
+                CurrentXPAmount -= 100;
+            }
         }
 
         public void IncreasePlayerLevel()

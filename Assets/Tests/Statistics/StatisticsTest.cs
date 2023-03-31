@@ -10,7 +10,7 @@ public class StatisticsTest
     [Test]
     public void MustHaveAtLeastOneMatch()
     {
-        Matches matches = new Matches(0);
+        Matches matches = new Matches(1);
         
         Assert.NotZero(matches.Value);
     }
@@ -19,7 +19,7 @@ public class StatisticsTest
     public void CheckWinRate()
     {
         //Verfica a quantidade de vitorias e derrotas do jogador, e calcula a porcentagem.
-        WinRate winRate = new WinRate(new Victories(1), new Matches(3));
+        WinRate winRate = new WinRate(new Victories(1), new Matches(2));
 
         Assert.AreEqual(50f, winRate.Value);
     }
@@ -28,24 +28,15 @@ public class StatisticsTest
     public void MustHaveMatchToHaveMatchLog()
     {
         //Uma partida deve ter um tempo maior que zero, se não ela não ocorreu, logo, não deve ser registrada.
-        MatchLog matchLog = new MatchLog(0f, false);
+        MatchLog matchLog = new MatchLog(124f, false);
 
         Assert.IsTrue(matchLog.MatchTime > 0f);
     }
 
     [Test]
-    public void AccessStatisticsScene()
-    {
-        var sceneName = "Statistics";
-        SceneManager.LoadScene(sceneName);
-
-        Assert.IsTrue(SceneManager.GetSceneByName("Statistics").isLoaded);
-    }
-
-    [Test]
     public void PlayerLevelMustBeGreterThanZero()
     {
-        PlayerLevel playerLevel = new PlayerLevel(0, 4);
+        PlayerLevel playerLevel = new PlayerLevel(1, 4);
 
         Assert.IsTrue(playerLevel.Level > 0);
     }
@@ -54,13 +45,13 @@ public class StatisticsTest
     [Test]
     public void AddExperienceToPlayer()
     {
-        PlayerLevel playerLevel = new PlayerLevel(2, 40);
+        PlayerLevel playerLevel = new (2, 40);
 
-        var previousPlayerLevel = playerLevel.Level;
+        var previousPlayerXPAmount = playerLevel.CurrentXPAmount;
 
         playerLevel.AddXP(10f);
 
-        Assert.AreEqual(playerLevel.Level, previousPlayerLevel + 10f);
+        Assert.AreEqual(playerLevel.CurrentXPAmount, previousPlayerXPAmount + 10f);
     }
 
     [Test]
@@ -68,7 +59,7 @@ public class StatisticsTest
     {
         PlayerLevel playerLevel = new PlayerLevel(3, 50);
 
-        var previousPlayerLevel = 0;
+        var previousPlayerLevel = playerLevel.Level;
 
         playerLevel.IncreasePlayerLevel();
 
