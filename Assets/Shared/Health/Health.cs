@@ -7,15 +7,20 @@ namespace Game
 {
     public abstract class BaseValueClass
     {
-        public float Value { get; protected set; }
+        private float _value;
+
+        public float Value
+        {
+            get => _value;
+            protected set => _value = Mathf.Clamp(_value, 0, _maxValue);
+        }
+
         protected float _maxValue;
 
         protected BaseValueClass(float initialValue, float maxValue)
         {
             Value = initialValue;
             _maxValue = maxValue;
-        
-            Debug.Log("Base");
         }
 
         public virtual void AddValue(float value)
@@ -52,7 +57,6 @@ namespace Game
 
         public Health(float initialValue, float maxValue) : base(initialValue, maxValue)
         {
-            Debug.Log("Value");
         }
     }
 }

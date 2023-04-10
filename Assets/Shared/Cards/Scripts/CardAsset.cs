@@ -8,10 +8,17 @@ namespace Game
     public class CardAsset : ScriptableObject
     {
         [SerializeField] private List<Element> elements = new List<Element>();
-        [SerializeField] private List<AttackBehaviour> attackBehaviour = new List<AttackBehaviour>();
+        [SerializeField] private List<Ability> ability = new List<Ability>();
+
+        public string cardName;
+
+        [TextArea] public string cardDescription;
 
         [SerializeField] private float baseHealth;
 
         public float GetBaseHealth() => baseHealth;
+        public List<Ability> GetAbilities() => ability;
+
+        public List<Element> GetCardElements() => elements;
     }
 }

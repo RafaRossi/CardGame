@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emission_Texture:
-        m_Texture: {fileID: 2800000, guid: 80d6ef3e5cf2f324b957f2bf566d3340, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -76,7 +76,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal_Texture:
-        m_Texture: {fileID: 2800000, guid: 2e837de79fa67ba418fe5650d79c716e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 98b64c5b76c3a7441b76eac13476297f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -143,13 +143,13 @@ Material:
     m_Colors:
     - _Back_Color: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Bottom_Color: {r: 1, g: 0, b: 0, a: 1}
+    - _Bottom_Color: {r: 0, g: 0, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Detail_Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Emission_Bottom_Color: {r: 1, g: 0.06773241, b: 0, a: 0}
+    - _Emission_Bottom_Color: {r: 0, g: 0, b: 0, a: 0}
     - _Emission_Color: {r: 1, g: 1, b: 1, a: 0}
-    - _Emission_Top_Color: {r: 0, g: 0.29346967, b: 1, a: 0}
+    - _Emission_Top_Color: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Top_Color: {r: 0, g: 0.10369301, b: 1, a: 1}
+    - _Top_Color: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
