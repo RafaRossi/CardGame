@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -15,6 +16,7 @@ namespace Game
         private static readonly int TopColor = Shader.PropertyToID("_Top_Color");
         private static readonly int BottomColor = Shader.PropertyToID("_Bottom_Color");
         public Health Health { get; set; }
+        
 
         private void Awake()
         {
@@ -25,14 +27,17 @@ namespace Game
         {
             Health = new Health(cardInfo.GetBaseHealth(), cardInfo.GetBaseHealth());
 
-            foreach (var abilityBehaviour in cardInfo.GetAbilities())
+            foreach (var ability in cardInfo.GetAbilities())
             {
-                var ability = Instantiate(abilityBehaviour, transform);
-                
-                //ability
+                foreach (var abilityBehaviour in ability.AbilityBehaviours.Select(abilityBehaviour => Instantiate(abilityBehaviour, transform)))
+                {
+                    abilityBehaviour.name = ability.AbilityName;
+                }
             }
 
             InitializeCardMaterial();
+            
+            BaseValueClass.OnBaseValueUpdated?.Invoke();
         }
 
         public string GetCardName() => cardInfo.cardName;
@@ -47,7 +52,6 @@ namespace Game
 
         private void OnDisable()
         {
-            
             clickableComponent.OnClick -= SelectCard;
         }
 

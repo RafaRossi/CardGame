@@ -8,18 +8,25 @@ namespace Game
     public abstract class BaseValueClass
     {
         private float _value;
+        
+        public static Action OnBaseValueUpdated = delegate {  };
 
         public float Value
         {
             get => _value;
-            protected set => _value = Mathf.Clamp(_value, 0, _maxValue);
+            protected set
+            {
+                _value = Mathf.Clamp(value, 0, _maxValue);
+                
+                OnBaseValueUpdated?.Invoke();
+            }
         }
 
         protected float _maxValue;
 
         protected BaseValueClass(float initialValue, float maxValue)
         {
-            Value = initialValue;
+            _value = initialValue;
             _maxValue = maxValue;
         }
 

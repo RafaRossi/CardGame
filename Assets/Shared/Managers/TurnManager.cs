@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class TurnManager
+public class TurnManager : Managers
 {
     public Action OnChangeTurn = delegate {  };
-
     public Turn CurrentTurn { get; private set; }
 
     public void ChangeTurn(Turn newTurn)
@@ -15,6 +14,11 @@ public class TurnManager
         CurrentTurn = newTurn;
         
         OnChangeTurn?.Invoke();
+    }
+
+    public override void Initialize()
+    {
+        
     }
 }
 

@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: 1958838594677569659}
   - component: {fileID: 8350763655543845497}
   - component: {fileID: 4606876952550570966}
+  - component: {fileID: 5398481642085770228}
   m_Layer: 0
   m_Name: card
   m_TagString: Untagged
@@ -442,6 +443,21 @@ MonoBehaviour:
   cardInfo: {fileID: 11400000, guid: 4c5aac12890509e46b02737a3bfc6611, type: 2}
   clickableComponent: {fileID: 8350763655543845497}
   cardMeshRenderer: {fileID: 4083416254327101479}
+--- !u!114 &5398481642085770228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2570369026993076722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdd5bd3f3f1f2594f9ff23b5f93bce5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthText: {fileID: 5575041035069626895}
+  cardNameText: {fileID: 2515301956598120318}
+  card: {fileID: 4606876952550570966}
 --- !u!1 &4770572035825895455
 GameObject:
   m_ObjectHideFlags: 0

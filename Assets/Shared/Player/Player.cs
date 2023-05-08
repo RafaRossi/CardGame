@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Game;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player
 {
     public PlayerData playerData;
     [field:SerializeField] public Mana Mana {  get; set; }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7136168964587161317}
   - component: {fileID: 8817880900801967455}
   m_Layer: 0
-  m_Name: Ability Behaviour Base
+  m_Name: Single Damage Ability Behaviour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

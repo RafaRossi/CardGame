@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class MatchManager : MonoBehaviour
+public class MatchManager : Managers
 {
     public static Action OnMatchStart = delegate {  };
     public static Action OnMatchEnd = delegate {  };
@@ -28,8 +28,8 @@ public class MatchManager : MonoBehaviour
         _turnManager.ChangeTurn(new Turn { CurrentPlayer = players[0], TurnNumber = 1});
     }
 
-    public Player GetOtherPlayer()
+    public override void Initialize()
     {
-        return players.FirstOrDefault(p => !_turnManager.CurrentTurn.CurrentPlayer);
+        
     }
 }
