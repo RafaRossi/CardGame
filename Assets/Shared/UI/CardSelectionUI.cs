@@ -24,13 +24,13 @@ public class CardSelectionUI : MonoBehaviour
         GameManager.OnCardSelected -= UpdateUI;
     }
     
-    private void UpdateUI(Card card)
+    private void UpdateUI(Card cardProperties)
     {
-        cardNameText.text = card.GetCardName();
+        cardNameText.text = cardProperties.GetCardName();
         
-        InitializeCardAbilityButtons(card);
+        InitializeCardAbilityButtons(cardProperties);
         
-        UpdateCardDescriptionText(card.GetCardDescription());
+        UpdateCardDescriptionText(cardProperties.GetCardDescription());
 
         if (!cardSelectionPanel.activeSelf)
         {
@@ -53,16 +53,16 @@ public class CardSelectionUI : MonoBehaviour
         cardDescriptionText.text = cardDescription;
     }
 
-    private void InitializeCardAbilityButtons(Card card)
+    private void InitializeCardAbilityButtons(Card cardProperties)
     {
         foreach (var cardAbilityButton in cardAbilityButtons)
         {
             cardAbilityButton.gameObject.SetActive(false);
         }
         
-        for (var i = 0; i < card.GetCardAbilities().Count && i < cardAbilityButtons.Count; i++)
+        for (var i = 0; i < cardProperties.GetCardAbilities().Count && i < cardAbilityButtons.Count; i++)
         {
-            cardAbilityButtons[i].Initialize(card.GetCardAbilities()[i]);
+            cardAbilityButtons[i].Initialize(cardProperties.GetCardAbilities()[i]);
         }
     }
 }

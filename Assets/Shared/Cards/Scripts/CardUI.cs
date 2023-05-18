@@ -5,13 +5,14 @@ using System.Globalization;
 using Game;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CardUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private TMP_Text cardNameText;
     
-    [SerializeField] private Card card;
+    [FormerlySerializedAs("card")] [SerializeField] private Card cardProperties;
     
     private void OnEnable()
     {
@@ -25,7 +26,7 @@ public class CardUI : MonoBehaviour
     
     private void UpdateUI()
     {
-        healthText.text = card.Health.Value.ToString(CultureInfo.CurrentCulture);
-        cardNameText.text = card.GetCardName();
+        healthText.text = cardProperties.Health.Value.ToString(CultureInfo.CurrentCulture);
+        cardNameText.text = cardProperties.GetCardName();
     }
 }

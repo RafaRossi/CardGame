@@ -18,4 +18,4 @@ MonoBehaviour:
   strongness:
   - {fileID: 11400000, guid: 98c158477da6f074caf20736f56bb195, type: 2}
   - {fileID: 11400000, guid: eb5ccc0394e69434e876246803922eca, type: 2}
-  elementColor: {r: 0.9433962, g: 0.82240266, b: 0.13705942, a: 1}
+  elementColor: {r: 0.9433962, g: 0.82240266, b: 0.13705942, a: 0}

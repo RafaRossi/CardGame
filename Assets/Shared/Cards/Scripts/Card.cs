@@ -2,21 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Game;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Game
 {
-    public class Card : MonoBehaviour
+    public class Card : MonoBehaviour, ICardProperties
     {
+        public CardMaterial CardMaterial { get; set; }
+        [field:SerializeField] public CardAsset CardAsset { get; set; }
+        
         [SerializeField] private CardAsset cardInfo;
         [SerializeField] private Clickable clickableComponent;
         [SerializeField] private MeshRenderer cardMeshRenderer;
-        
-        private static readonly int TopColor = Shader.PropertyToID("_Top_Color");
-        private static readonly int BottomColor = Shader.PropertyToID("_Bottom_Color");
+
         public Health Health { get; set; }
-        
 
         private void Awake()
         {
@@ -34,9 +35,9 @@ namespace Game
                     abilityBehaviour.name = ability.AbilityName;
                 }
             }
-
-            InitializeCardMaterial();
             
+            CardMaterial.InitializeCardMaterial(cardMeshRenderer.material, cardInfo);
+
             BaseValueClass.OnBaseValueUpdated?.Invoke();
         }
 
@@ -59,23 +60,42 @@ namespace Game
         {
             GameManager.OnCardSelected?.Invoke(this);
         }
+    }
+}
 
-        private void InitializeCardMaterial()
+public interface ICardMaterial
+{
+    CardMaterial CardMaterial { get; set; }
+}
+
+public class CardMaterial
+{
+    private static readonly int TopColor = Shader.PropertyToID("_Top_Color");
+    private static readonly int BottomColor = Shader.PropertyToID("_Bottom_Color");
+
+    public static CardMaterial CardMaterialFactory(Material material, CardAsset cardInfo)
+    {
+        return new CardMaterial(material, cardInfo);
+    }
+
+    private CardMaterial(Material material, CardAsset cardInfo)
+    {
+        InitializeCardMaterial(material, cardInfo);
+    }
+
+    public static void InitializeCardMaterial(Material material, CardAsset cardInfo)
+    {
+        var elements = cardInfo.GetCardElements();
+
+        if (elements.Count > 1)
         {
-            var material = cardMeshRenderer.material;
-            
-            var elements = cardInfo.GetCardElements();
-
-            if (elements.Count > 1)
-            {
-                material.SetColor(TopColor, elements[0].elementColor);
-                material.SetColor(BottomColor, elements[1].elementColor);
-            }
-            else
-            {
-                material.SetColor(TopColor, elements[0].elementColor);
-                material.SetColor(BottomColor, elements[0].elementColor);
-            }
+            material.SetColor(TopColor, elements[0].elementColor);
+            material.SetColor(BottomColor, elements[1].elementColor);
+        }
+        else
+        {
+            material.SetColor(TopColor, elements[0].elementColor);
+            material.SetColor(BottomColor, elements[0].elementColor);
         }
     }
 }

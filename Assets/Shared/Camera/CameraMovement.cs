@@ -25,6 +25,8 @@ public class CameraMovement : MonoBehaviour
     {
         //transform.position += transform.forward * (Input.mouseScrollDelta.y * scrollSensitivity);
 
+        if(EventSystem.current.IsPointerOverGameObject()) return;
+        
         Vector3 newPosition = transform.position - Vector3.up * Input.mouseScrollDelta.y;
         desiredPosition = Vector3.Lerp(transform.position, newPosition, scrollSensitivity * Time.deltaTime);
         

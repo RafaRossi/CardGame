@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game;
 using UnityEngine;
 
 namespace Game
@@ -21,4 +22,14 @@ namespace Game
 
         public List<Element> GetCardElements() => elements;
     }
+}
+
+public interface ICardAsset
+{
+    CardAsset CardAsset { get; set; }
+}
+
+public interface ICardProperties : ICardAsset, ICardMaterial
+{
+    
 }
