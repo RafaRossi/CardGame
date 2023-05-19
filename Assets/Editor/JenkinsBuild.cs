@@ -1,4 +1,6 @@
 using UnityEngine;
+
+#if UNITY_EDITOR
 using UnityEditor;
 using System.Collections.Generic;
 using UnityEditor.Build.Reporting;
@@ -133,3 +135,4 @@ public class JenkinsBuild {
         public string targetDir = "~/Desktop";
     }
 }
+#endif
